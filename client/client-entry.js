@@ -1,4 +1,4 @@
-// 入口文件
+// 客户端入口文件
 
 import Vue from 'vue'
 import App from './App.vue'
