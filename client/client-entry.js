@@ -1,9 +1,6 @@
 // 客户端入口文件
 
-import Vue from 'vue'
-import App from './App.vue'
+const { createApp } = require('./app')
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+const { app } = createApp()
+app.$mount('#app')

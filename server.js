@@ -1,6 +1,6 @@
 const express = require('express')
 const render = require('vue-server-renderer')
-const createApp = require('./client/server-entry')
+const { app } = require('./client/server-entry')
 const path = require('path')
 
 const server = express()
@@ -9,7 +9,7 @@ const renderer = render.createRenderer({
 })
 
 server.get('*', (req,res) => {
-  renderer.renderToString(createApp(),(err, html) => {
+  renderer.renderToString(app, (err, html) => {
     if (err) {
       res.status(500).end('Internal Server Error')
       return  

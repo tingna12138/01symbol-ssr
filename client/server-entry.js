@@ -1,10 +1,7 @@
 // 服务端入口文件
 
-// import Vue from 'vue'
-const Vue = require('vue')
+const { createApp } = require('./app')
 
-module.exports = () => {
-  return new Vue({
-    template: '<div>这是服务端用的vue模板</div>'
-   })
-}
+const { app } = createApp()
+
+module.exports.app = app
