@@ -1,12 +1,12 @@
 // import { resolve } from 'dns';
-const handleSSR = require('./router/dev-ssr')
+// const handleSSR = require('./router/dev-ssr')
 
 // 服务端入口文件
 
 const { createApp } = require('./app')
 
 // 解决服务端第一次路由导航的问题
-module.exports.createHtml = context => {
+module.exports = context => {
   return new Promise((res,rej) => {
     const { app, router } = createApp()
     // router.get('*', handleSSR(context))
