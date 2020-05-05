@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "webpack-dev-server --config build/webpack.config.client",
-    "server": "webpack --config build/webpack.config.server",
+    "server": "node server",
     "client1": "npm run client && npm run server"
   },
   "keywords": [],
