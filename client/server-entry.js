@@ -15,6 +15,7 @@ module.exports = context => {
 
     router.onReady(() => {
       const matchedComponents = router.getMatchedComponents()
+      console.log('路由路径', matchedComponents.length)
       // 如果没有匹配到的路由，返回404
       if (!matchedComponents.length) {
         return rej({ code: 404 })

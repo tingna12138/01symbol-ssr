@@ -7,7 +7,6 @@ const serverConfig = require('../../build/webpack.config.server')
 
 module.exports = (callback) => {
   // console.log(123456, serverConfig.module.rules.test)
-  console.log(123456, serverConfig)
   // 让服务端从内存中读取文件
   const mfs = new MFS()
   const serverCompiler = WEBPACK(serverConfig)

@@ -5,7 +5,6 @@ const { createBundleRenderer } = require('vue-server-renderer')
 const server = express()
 let renderer
 devSSR((serverBundle, clientManifestResp, template) => {
-  console.log(123, template)
   renderer = createBundleRenderer(serverBundle, {
     // runInNewContext: false, // 推荐,每次创建一个独立的进程
     template, // （可选）页面模板
@@ -14,18 +13,23 @@ devSSR((serverBundle, clientManifestResp, template) => {
 })
 
 server.get('*', (req,res) => {
-  res.status(200)
-  res.setHeader('Content-Type', 'text/html;charset=utf-8')
-  renderer.renderToString(
-    {url: req.originalUrl},(err, html) => {
-      if(err) {
-        console.log(456, err)
-        return
+  // console.log('请求路径',req.url, req.originalUrl)
+  if(req.url === "/favicon.ico"){
+    res.end();
+  } else {
+    res.status(200)
+    res.setHeader('Content-Type', 'text/html;charset=utf-8')
+    renderer.renderToString(
+      {url: req.originalUrl},(err, html) => {
+        if(err) {
+          console.log(4567, err)
+          return
+        }
+        // console.log(123,html)
+        res.end(html)
       }
-      // console.log(123,html)
-      res.end(html)
-    }
-  )
+    )
+  }
 })
 
 server.listen(3000, () => {
