@@ -11,9 +11,7 @@ devSSR((serverBundle, clientManifestResp, template) => {
     clientManifest: clientManifestResp.data // （可选）客户端构建 manifest
   })
 })
-
 server.get('*', (req,res) => {
-  // console.log('请求路径',req.url, req.originalUrl)
   if(req.url === "/favicon.ico"){
     res.end();
   } else {

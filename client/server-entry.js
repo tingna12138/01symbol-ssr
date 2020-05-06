@@ -3,10 +3,11 @@
 
 // 服务端入口文件
 
-const { createApp } = require('./app')
+// const { createApp } = require('./app')
+import createApp from './app'
 
 // 解决服务端第一次路由导航的问题
-module.exports = context => {
+export default context => {
   return new Promise((res,rej) => {
     const { app, router } = createApp()
     // router.get('*', handleSSR(context))
@@ -15,7 +16,7 @@ module.exports = context => {
 
     router.onReady(() => {
       const matchedComponents = router.getMatchedComponents()
-      console.log('路由路径', matchedComponents.length)
+      console.log('路由路径', matchedComponents)
       // 如果没有匹配到的路由，返回404
       if (!matchedComponents.length) {
         return rej({ code: 404 })
